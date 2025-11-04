@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Development Area</title>
+    <!-- ALL CSS FILES  -->
+    <link
+      rel="stylesheet"
+      href="http://localhost:5050/public/assets/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="http://localhost:5050/public/assets/css/style.css"
+    />
+    <link
+      rel="stylesheet"
+      href="http://localhost:5050/public/assets/css/responsive.css"
+    />
+  </head>
+  <body>
+    <div class="wrap shadow">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="d-flex justify-content-between">
+            Sign Up <a href="/student">Back</a>
+          </h2>
+
+          <% if(message) %>
+
+          <form action="/student" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+              <label for="">Name</label>
+              <input class="form-control" name="name" type="text" />
+            </div>
+            <div class="form-group">
+              <label for="">Email</label>
+              <input class="form-control" name="email" type="text" />
+            </div>
+            <div class="form-group">
+              <label for="">Cell</label>
+              <input class="form-control" name="cell" type="text" />
+            </div>
+            <div class="form-group">
+              <label for="">Photo</label>
+              <input class="form-control" name="photo" type="file" />
+            </div>
+            <div class="form-group">
+              <input class="btn btn-primary" type="submit" value="Sign Up" />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- JS FILES  -->
+    <script src="http://localhost:5050/public/assets/js/jquery-3.4.1.min.js"></script>
+    <script src="http://localhost:5050/public/assets/js/popper.min.js"></script>
+    <script src="http://localhost:5050/public/assets/js/bootstrap.min.js"></script>
+    <script src="http://localhost:5050/public/assets/js/custom.js"></script>
+  </body>
+</html>

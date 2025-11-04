@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Development Area</title>
+    <!-- ALL CSS FILES  -->
+    <link rel="stylesheet" href="public/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="public/assets/css/style.css" />
+    <link rel="stylesheet" href="public/assets/css/responsive.css" />
+  </head>
+  <body>
+    <div class="wrap-table shadow">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="d-flex justify-content-between">
+            All Student <a href="student/create">Create new lead</a>
+          </h2>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Cell</th>
+                <th>Photo</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+
+				<% studentData.forEach((item, index) => { %> 
+					
+						<tr>
+							<td><%= index + 1 %></td>
+							<td><%= item.name %></td>
+							<td><%= item.email %></td>
+							<td><%= item.cell %></td>
+							<td><img src="<%= item.photo %>" alt=""></td>
+							<td>
+								<a class="btn btn-sm btn-info" href="#">View</a>
+								<a class="btn btn-sm btn-warning" href="#">Edit</a>
+								<a class="btn btn-sm btn-danger" href="/delete/<%= item.id %>" onclick="return confirm('Are you sure?')">Delete</a>
+							</td>
+						</tr>	
+
+					<% }) %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- JS FILES  -->
+    <script src="public/assets/js/jquery-3.4.1.min.js"></script>
+    <script src="public/assets/js/popper.min.js"></script>
+    <script src="public/assets/js/bootstrap.min.js"></script>
+    <script src="public/assets/js/custom.js"></script>
+  </body>
+</html>
