@@ -37,9 +37,9 @@
 							<td><%= item.cell %></td>
 							<td><img src="<%= item.photo %>" alt=""></td>
 							<td>
-								<a class="btn btn-sm btn-info" href="#">View</a>
+								<a class="btn btn-sm btn-info" href="/student/view/<%=item.id %>">View</a>
 								<a class="btn btn-sm btn-warning" href="#">Edit</a>
-								<a class="btn btn-sm btn-danger" href="/delete/<%= item.id %>" onclick="return confirm('Are you sure?')">Delete</a>
+								<a class="btn btn-sm btn-danger" href="/student/delete/<%= item.id %>" onclick="return confirm('Are you sure?')">Delete</a>
 							</td>
 						</tr>	
 

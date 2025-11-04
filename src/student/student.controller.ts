@@ -46,27 +46,22 @@ export class StudentController {
     };
   }
 
-  // @Delete(':id')
-  // @Redirect('/')
-  // async delete(@Param('id') id: string) {
-  //   await this.studentService.delete(id);
-  //   return {};
-  // }
+  @Get('view/:id')
+  @Render('student/view')
+  async findOne(@Param('id') id: string) {
+    const student = await this.studentService.findOne(id);
+    return { student };
+  }
 
   @Get('delete/:id')
-  async delete(@Param('id') id: string, @Res() res: Response) {
+  async delete(@Param('id') id: string, @Res() res) {
     try {
-      console.log('🔴 Deleting student with ID:', id);
-      console.log('✅ Student deleted successfully');
-      return await this.studentService.delete(id);
+      await this.studentService.delete(id);
+
+      return res.redirect('/student');
     } catch (error) {
       console.error('Delete error:', error);
-      throw error;
+      return res.status(500).send(`Delete failed: ${error.message}`);
     }
   }
-  // @Post('student/:id')
-  // async deleteStudent(@Param('id') id: string) {
-  //   await this.studentService.delete(id);
-  //   return { Redirect: '/student' };
-  // }
 }

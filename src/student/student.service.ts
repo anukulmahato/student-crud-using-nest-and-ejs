@@ -9,7 +9,15 @@ export class StudentService {
     return await this.prismaService.students.findMany();
   }
 
-  async create(createStudentDto: CreateStudentDto, file: string) {
+  async findOne(id: string) {
+    const student = await this.prismaService.students.findUnique({
+      where: { id },
+    });
+
+    return student;
+  }
+
+  async create(createStudentDto: CreateStudentDto, file: any) {
     await this.prismaService.students.create({
       data: {
         name: createStudentDto.name,
@@ -24,18 +32,11 @@ export class StudentService {
     };
   }
 
-  // async delete(id: string) {
-  //   return await this.prismaService.students.delete({
-  //     where: { id },
-  //   });
-  // }
-
   async delete(id: string) {
     try {
       const deleted = await this.prismaService.students.delete({
         where: { id },
       });
-      console.log('✅ Deleted student:', deleted);
       return deleted;
     } catch (error) {
       console.error('❌ Delete error:', error);
