@@ -13,6 +13,7 @@ import {
 import { FileInterceptor } from '@nestjs/platform-express';
 import { storage } from 'src/utils/cloudinary';
 import { CreateStudentDto } from './dto/create-student.dto';
+import { UpdateStudentDto } from './dto/update-student.dto';
 import { StudentService } from './student.service';
 @Controller('student')
 export class StudentController {
@@ -51,6 +52,27 @@ export class StudentController {
   async findOne(@Param('id') id: string) {
     const student = await this.studentService.findOne(id);
     return { student };
+  }
+
+  @Get('edit/:id')
+  @Render('student/edit')
+  async showEditForm(@Param('id') id: string) {
+    const student = await this.studentService.findOne(id);
+
+    return { student, message: '' };
+  }
+
+  @Post('update/:id')
+  @UseInterceptors(FileInterceptor('photo', { storage }))
+  async update(
+    @Param('id') id: string,
+    @Body(ValidationPipe) updateStudentDto: UpdateStudentDto,
+
+    @UploadedFile() file,
+    @Res() res,
+  ) {
+    await this.studentService.update(id, updateStudentDto, file?.path || null);
+    return res.redirect('/student');
   }
 
   @Get('delete/:id')

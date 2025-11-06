@@ -13,7 +13,7 @@
       <div class="card">
         <div class="card-body">
           <h2 class="d-flex justify-content-between">
-            All Student <a href="student/create">Create new lead</a>
+            All Student <a href="student/create">Create new Student</a>
           </h2>
           <table class="table table-striped">
             <thead>
@@ -38,8 +38,8 @@
 							<td><img src="<%= item.photo %>" alt=""></td>
 							<td>
 								<a class="btn btn-sm btn-info" href="/student/view/<%=item.id %>">View</a>
-								<a class="btn btn-sm btn-warning" href="#">Edit</a>
-								<a class="btn btn-sm btn-danger" href="/student/delete/<%= item.id %>" onclick="return confirm('Are you sure?')">Delete</a>
+								<a class="btn btn-sm btn-warning" href="/student/edit/<%= item.id  %>">Edit</a>
+								<a class="btn btn-sm btn-danger" href="/student/delete/<%= item.id %>" onclick="return confirm('তুমি কি আমাকে মুছে দিতে চাও?')">Delete</a>
 							</td>
 						</tr>	
 
